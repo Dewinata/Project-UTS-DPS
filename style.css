@@ -1,9 +1,42 @@
-/* Pengaturan warna background */
-body {
-    background-color: #f2f2f2;
-}
+from flask import Flask, render_template
 
-/* Pengaturan warna text */
-h1 {
-    color: #00698f;
-}
+app = Flask(_name_)
+
+@app.route('/')
+def index():
+    menu_items = [
+        {
+            'name': 'Ayam Bakar',
+            'image': 'ayam_bakar.jpg',
+            'description': 'Ayam bakar dengan bumbu rica-rica'
+        },
+        {
+            'name': 'Lele Goreng',
+            'image': 'lele_goreng.jpg',
+            'description': 'Lele goreng tepung dengan sambal matah'
+        },
+        {
+            'name': 'Bebek',
+            'image': 'bebek.jpg',
+            'description': 'Bebek goreng crispy dengan saus kacang'
+        },
+        {
+            'name': 'Ampela',
+            'image': 'ampela.jpg',
+            'description': 'Ampela goreng dengan bumbu kuning'
+        },
+        {
+            'name': 'Jus Jeruk',
+            'image': 'jus_jeruk.jpg',
+            'description': 'Jus segar dari jeruk nipis'
+        },
+        {
+            'name': 'Kopi Hitam',
+            'image': 'kopi_hitam.jpg',
+            'description': 'Kopi hitam dengan aroma khas'
+        }
+    ]
+    return render_template('index.html', menu_items=menu_items)
+
+if _name_ == '_main_':
+    app.run(debug=True)
